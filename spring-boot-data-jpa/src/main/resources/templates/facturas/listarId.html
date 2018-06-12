@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}">Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Spring Boot</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="#about"
+					th:href="@{/listar}">Cliente</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+		<h1
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+			th:text="${titulo}"></h1>
+		<dl>
+			<dt>Id</dt>
+			<dd th:text="${factura.id}"></dd>
+			<dt>Nombre</dt>
+			<dd th:text="${factura.nombre}"></dd>
+			<dt>Cliente</dt>
+			<dd th:text="${factura.cliente.id}"></dd>
+			<dd th:text="${factura.cliente.nombre}"></dd>
+			<dt>Productos</dt>
+			<dd th:each="productos: ${factura.listaProductos}">
+				<span th:text="${productos.nombre}"></span>
+				<span th:text="${productos.precio}"></span>
+			</dd>
+			<dt>Subtotal</dt>
+			<dd th:text="${subtotal}"></dd>
+			<dt>Iva</dt>
+			<dd th:text="${iva}"></dd>
+			<dt>Total</dt>
+			<dd th:text="${total}"></dd>
+		</dl>
+	</div>
+</body>
+</html>
